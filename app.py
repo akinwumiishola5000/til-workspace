@@ -18,9 +18,34 @@ import til_chem as tc
 APP_NAME = "TIL Molecular Learning Workspace"
 VERSION = "0.1"
 SITE_URL = "https://www.theinsilicolab.org/home"
-DATA_DIR = Path(__file__).parent / "data"
+BASE_DIR = Path(__file__).parent
+DATA_DIR = BASE_DIR / "data"
+LOGO_FULL = BASE_DIR / "logo_full.png"
+LOGO_ICON = BASE_DIR / "logo_icon.png"
 
-st.set_page_config(page_title=APP_NAME, page_icon="🧪", layout="wide")
+# Brand colours taken from The Insilico Lab logo
+NAVY, GREEN, BLUE = "#00133F", "#3F824A", "#1E9FC0"
+
+st.set_page_config(page_title=APP_NAME, page_icon=str(LOGO_ICON) if LOGO_ICON.exists() else "🧪", layout="wide")
+
+if LOGO_ICON.exists():
+    st.logo(str(LOGO_ICON), size="large", link=SITE_URL, icon_image=str(LOGO_ICON))
+
+st.markdown(f"""
+<style>
+h1, h2, h3 {{ color: {NAVY}; }}
+h1 {{ font-weight: 800; letter-spacing: -0.01em; }}
+[data-testid="stMetricValue"] {{ color: {NAVY}; }}
+[data-testid="stSidebar"] {{ border-right: 3px solid {GREEN}; }}
+.til-rule {{ height: 5px; width: 100%; margin: 0.2rem 0 1.2rem;
+  background: linear-gradient(90deg, {NAVY} 0 40%, {BLUE} 40% 70%, {GREEN} 70% 100%); border-radius: 2px; }}
+.til-hero-sub {{ color: {GREEN}; font-weight: 700; font-size: 1.15rem; margin: 0 0 0.6rem; }}
+</style>
+""", unsafe_allow_html=True)
+
+
+def brand_rule():
+    st.markdown('<div class="til-rule"></div>', unsafe_allow_html=True)
 
 
 # ---------------------------------------------------------------- helpers
@@ -75,24 +100,31 @@ if "smiles" not in st.session_state:
 
 # ---------------------------------------------------------------- pages
 def home():
-    st.title(APP_NAME)
-    st.caption(f"Version {VERSION}. Free for members of The Insilico Lab.")
+    logo_col, text_col = st.columns([1, 2], gap="large", vertical_alignment="center")
+    with logo_col:
+        if LOGO_FULL.exists():
+            st.image(str(LOGO_FULL), width="stretch")
+    with text_col:
+        st.title("Molecular Learning Workspace")
+        st.markdown('<p class="til-hero-sub">Learn. Practise. Analyse. Grow.</p>', unsafe_allow_html=True)
+        st.caption(f"Version {VERSION}. Free for members of The Insilico Lab.")
+    brand_rule()
     st.write(
         "Draw on the same tools used in computational drug discovery without installing anything. "
         "Type a molecule as SMILES or look it up by name, see its structure, calculate its properties, "
         "check it against Lipinski's rule of five, and download your results for assignments."
     )
-    c1, c2, c3 = st.columns(3)
+    c1, c2, c3 = (col.container(border=True) for col in st.columns(3))
     with c1:
-        st.subheader("Analyse one molecule")
+        st.subheader("One molecule")
         st.write("Structure, properties and drug-likeness rules for a single compound.")
         st.page_link(pages["workspace"], label="Open the workspace", icon="🧪")
     with c2:
-        st.subheader("Compare many")
-        st.write("Paste a list or upload a CSV and get one table for all of them.")
+        st.subheader("Many molecules")
+        st.write("Paste a list or upload a CSV and get one table for the whole set.")
         st.page_link(pages["compare"], label="Compare molecules", icon="📊")
     with c3:
-        st.subheader("Learn the terms")
+        st.subheader("The key terms")
         st.write("Short explanations of each property and rule, written for beginners.")
         st.page_link(pages["learn"], label="Read the guide", icon="📘")
     st.divider()
@@ -101,6 +133,7 @@ def home():
 
 def workspace():
     st.title("Molecule workspace")
+    brand_rule()
 
     refs = reference_molecules()
     with st.container(border=True):
@@ -202,6 +235,7 @@ def workspace():
 
 def compare():
     st.title("Compare molecules")
+    brand_rule()
     st.write("Put one molecule per line as `SMILES name`, or `name,SMILES`. You can also upload a CSV "
              "with columns called `name` and `smiles`.")
     sample = "\n".join(f"{r.smiles} {r.name}" for r in reference_molecules().head(5).itertuples())
@@ -263,6 +297,7 @@ def compare():
 
 def learn():
     st.title("What the numbers mean")
+    brand_rule()
     st.write("A quick guide to every value in the workspace. These are rules of thumb for oral drugs, "
              "not laws: they help you prioritise molecules, not reject them outright.")
     guide = [
@@ -305,6 +340,8 @@ pages = {
 }
 nav = st.navigation(list(pages.values()))
 with st.sidebar:
-    st.markdown(f"**The Insilico Lab**  \n[theinsilicolab.org]({SITE_URL})")
+    if LOGO_FULL.exists():
+        st.image(str(LOGO_FULL), width="stretch")
+    st.markdown(f"[theinsilicolab.org]({SITE_URL})")
     st.caption(f"{APP_NAME} v{VERSION}")
 nav.run()

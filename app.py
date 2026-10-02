@@ -112,7 +112,7 @@ def home():
     st.write(
         "Draw on the same tools used in computational drug discovery without installing anything. "
         "Type a molecule as SMILES or look it up by name, see its structure, calculate its properties, "
-        "check it against Lipinski's rule of five, and download your results for assignments."
+        "check it against Lipinski's rule of five, and download your results."
     )
     c1, c2, c3 = (col.container(border=True) for col in st.columns(3))
     with c1:

@@ -286,7 +286,7 @@ def learn():
         ("Fraction sp3 C", "The share of carbon atoms that are sp3 (saturated). Flat, aromatic-heavy molecules "
          "have low values; a moderate value is often linked with better solubility."),
         ("Lipinski's rule of five", "Most orally active drugs have no more than one violation of: MW ≤ 500, "
-         "LogP ≤ 5, donors ≤ 5, acceptors ≤ 10. Natural products, antibiotics and some newer drug classes "
+         "LogP ≤ 5, H-bond donors ≤ 5, H-bond acceptors ≤ 10. Natural products, antibiotics and some newer drug classes "
          "deliberately sit beyond these rules, so treat a failure as a flag to look closer."),
     ]
     for term, text in guide:

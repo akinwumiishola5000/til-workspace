@@ -26,7 +26,7 @@ LOGO_ICON = BASE_DIR / "logo_icon.png"
 # Brand colours taken from The Insilico Lab logo
 NAVY, GREEN, BLUE = "#00133F", "#3F824A", "#1E9FC0"
 
-st.set_page_config(page_title=APP_NAME, page_icon=str(LOGO_ICON) if LOGO_ICON.exists() else "🧪", layout="wide")
+st.set_page_config(page_title=APP_NAME, page_icon=str(LOGO_ICON) if LOGO_ICON.exists() else ":material/hub:", layout="wide")
 
 if LOGO_ICON.exists():
     st.logo(str(LOGO_ICON), size="large", link=SITE_URL, icon_image=str(LOGO_ICON))
@@ -118,15 +118,15 @@ def home():
     with c1:
         st.subheader("One molecule")
         st.write("Structure, properties and drug-likeness rules for a single compound.")
-        st.page_link(pages["workspace"], label="Open the workspace", icon="🧪")
+        st.page_link(pages["workspace"], label="Open the workspace", icon=":material/hub:")
     with c2:
         st.subheader("Many molecules")
         st.write("Paste a list or upload a CSV and get one table for the whole set.")
-        st.page_link(pages["compare"], label="Compare molecules", icon="📊")
+        st.page_link(pages["compare"], label="Compare molecules", icon=":material/scatter_plot:")
     with c3:
         st.subheader("The key terms")
         st.write("Short explanations of each property and rule, written for beginners.")
-        st.page_link(pages["learn"], label="Read the guide", icon="📘")
+        st.page_link(pages["learn"], label="Read the guide", icon=":material/menu_book:")
     st.divider()
     st.write(f"Part of [The Insilico Lab]({SITE_URL}). Calculations use the open-source RDKit toolkit.")
 
@@ -333,10 +333,10 @@ def learn():
 
 # ---------------------------------------------------------------- navigation
 pages = {
-    "home": st.Page(home, title="Home", icon="🏠", default=True),
-    "workspace": st.Page(workspace, title="Molecule workspace", icon="🧪", url_path="workspace"),
-    "compare": st.Page(compare, title="Compare molecules", icon="📊", url_path="compare"),
-    "learn": st.Page(learn, title="What the numbers mean", icon="📘", url_path="learn"),
+    "home": st.Page(home, title="Home", icon=":material/home:", default=True),
+    "workspace": st.Page(workspace, title="Molecule workspace", icon=":material/hub:", url_path="workspace"),
+    "compare": st.Page(compare, title="Compare molecules", icon=":material/scatter_plot:", url_path="compare"),
+    "learn": st.Page(learn, title="What the numbers mean", icon=":material/menu_book:", url_path="learn"),
 }
 nav = st.navigation(list(pages.values()))
 with st.sidebar:

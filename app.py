@@ -1,4 +1,4 @@
-"""TIL Molecular Learning Workspace (v0.1)
+"""TIL Molecular Learning Workspace (v1.0.0)
 
 A free, browser-based molecular workspace for members of The Insilico Lab.
 Run locally with:  streamlit run app.py
@@ -16,7 +16,7 @@ import streamlit as st
 import til_chem as tc
 
 APP_NAME = "TIL Molecular Learning Workspace"
-VERSION = "0.1"
+VERSION = "1.0.0"
 SITE_URL = "https://www.theinsilicolab.org/home"
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"

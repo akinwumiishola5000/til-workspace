@@ -1,6 +1,6 @@
 # TIL Molecular Learning Workspace
 
-Version 0.1 of the TIL CADD Learning Hub: a free, browser-based molecular workspace for members of [The Insilico Lab](https://www.theinsilicolab.org/home). Trainees can calculate molecular properties and check drug-likeness without installing Python or RDKit.
+Version 1.0.0 of the TIL CADD Learning Hub: a free, browser-based molecular workspace for members of [The Insilico Lab](https://www.theinsilicolab.org/home). Trainees can calculate molecular properties and check drug-likeness without installing Python or RDKit.
 
 ## What it does
 

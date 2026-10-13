@@ -1,6 +1,6 @@
 # Molecular Learning Workspace
 
-[![DOI](https://zenodo.org/badge/1400927044.svg)]
+![DOI](https://zenodo.org/badge/1400927044.svg)
 
 (https://doi.org/10.5281/zenodo.23351872)
 

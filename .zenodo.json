@@ -1,0 +1,21 @@
+{
+  "upload_type": "software",
+  "title": "Molecular Learning Workspace",
+  "version": "0.1.0",
+  "description": "A free, browser-based workspace for teaching computer-aided drug design, built for trainees of The Insilico Lab. Users enter a molecule as SMILES, by name through PubChem, or from an example set, view its 2D structure, calculate physicochemical descriptors (molecular weight, Crippen LogP, TPSA, hydrogen-bond donors and acceptors, rotatable bonds, heavy atoms, rings, fraction sp3 carbon) and check Lipinski's rule of five and Veber's rules. Many molecules can be compared at once from a pasted list or CSV and exported as CSV. Built with Streamlit and RDKit.",
+  "creators": [
+    {"name": "Akinwumi, Ishola Abeeb", "affiliation": "University at Buffalo; The Insilico Lab", "orcid": "0000-0003-1973-8833"}
+  ],
+  "keywords": ["cheminformatics", "drug-likeness", "Lipinski rule of five", "molecular descriptors", "RDKit", "CADD education", "Streamlit"],
+  "license": "mit",
+  "language": "eng",
+  "related_identifiers": [
+    {"identifier": "https://www.theinsilicolab.org/cadd-toolkit", "relation": "isPartOf"}
+  ],
+  "references": [
+    "Lipinski CA et al. Adv. Drug Deliv. Rev. 1997, 23, 3-25.",
+    "Veber DF et al. J. Med. Chem. 2002, 45, 2615-2623.",
+    "Wildman SA, Crippen GM. J. Chem. Inf. Comput. Sci. 1999, 39, 868-873.",
+    "Ertl P et al. J. Med. Chem. 2000, 43, 3714-3717."
+  ]
+}
